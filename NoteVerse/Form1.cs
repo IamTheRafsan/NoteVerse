@@ -1,14 +1,17 @@
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 using Microsoft.VisualBasic;
 using MySql.Data.MySqlClient;
-
+using System.Speech.Recognition;
+using Microsoft.CognitiveServices.Speech;
 
 namespace NoteVerse
 {
     public partial class Form1 : Form
     {
+        private SpeechRecognitionEngine speechRecognizer;
         private TextBox noteName;
         private TextBox noteNameTextBox;
         private string connectionString = "Server=localhost;Database=NoteDatabase;Uid=root;Pwd=evan12345;";
@@ -17,13 +20,21 @@ namespace NoteVerse
         {
             InitializeComponent();
 
-            noteName = new TextBox();
-            noteNameTextBox = new TextBox();
+            noteName = new System.Windows.Forms.TextBox();
+            noteNameTextBox = new System.Windows.Forms.TextBox();
+
 
 
             // Wire up the saveBtn Click event
             saveBtn.Click += saveBtn_Click;
             newBtn.Click += newBtn_Click;
+            deleteBtn.Click += deleteBtn_Click;
+
+            InitializeSpeechRecognition();
+
+            voiceBtn.Click += voiceBtn_Click;
+            stopBtn.Click += stopBtn_Click;
+
 
             DisplayNoteNames();
         }
@@ -165,7 +176,8 @@ namespace NoteVerse
 
             foreach (string noteName in noteNames)
             {
-                Button noteButton = new Button();
+                System.Windows.Forms.Button noteButton = new System.Windows.Forms.Button();
+
                 noteButton.BackColor = SystemColors.Control;
                 noteButton.Location = new Point(6, buttonTop);
                 noteButton.Name = "dynamicNoteButton";
@@ -175,19 +187,10 @@ namespace NoteVerse
                 noteButton.UseVisualStyleBackColor = false;
                 noteButton.Click += DynamicNoteButton_Click;
 
-                Button deleteButton = new Button();
-                deleteButton.BackColor = SystemColors.ControlLight;
-                deleteButton.Location = new Point(400, buttonTop);
-                deleteButton.Name = "dynamicDeleteButton";
-                deleteButton.Size = new Size(100, 103);
-                deleteButton.TabIndex = 1;
-                deleteButton.Text = "Delete";
-                deleteButton.UseVisualStyleBackColor = false;
-                deleteButton.Click += (sender, e) => DeleteNoteButton_Click(noteName);
+              
 
                 // Add the button to your panel (Assuming you have a panel named panel2)
                 notePanel1.Controls.Add(noteButton);
-                notePanel.Controls.Add(deleteButton);
 
                 // Adjust the top position for the next button
                 buttonTop += noteButton.Height + 8; // Add some spacing between buttons
@@ -206,7 +209,8 @@ namespace NoteVerse
 
         private void DynamicNoteButton_Click(object sender, EventArgs e)
         {
-            Button clickedButton = (Button)sender;
+            System.Windows.Forms.Button clickedButton = (System.Windows.Forms.Button)sender;
+
             string selectedNoteName = clickedButton.Text;
             string noteText = GetNoteTextFromDatabase(selectedNoteName);
 
@@ -229,12 +233,14 @@ namespace NoteVerse
             }
         }
 
-        private void DeleteNoteButton_Click(string noteName)
+        private void deleteBtn_Click(object sender, EventArgs e)
         {
             try
             {
+                string selectedNoteName = noteNameTextBox.Text;
+
                 // Delete the note from the database
-                DeleteFromDatabase(noteName);
+                DeleteFromDatabase(selectedNoteName);
 
                 MessageBox.Show("Note deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 DisplayNoteNames();
@@ -255,14 +261,65 @@ namespace NoteVerse
                 {
                     cmd.Parameters.AddWithValue("@NoteName", noteName);
                     cmd.ExecuteNonQuery();
+                   
                 }
             }
         }
+
+        private void InitializeSpeechRecognition()
+        {
+            speechRecognizer = new SpeechRecognitionEngine();
+            System.Speech.Recognition.GrammarBuilder grammarBuilder = new System.Speech.Recognition.GrammarBuilder(); // Fully qualify GrammarBuilder
+            grammarBuilder.AppendDictation();
+            System.Speech.Recognition.Grammar grammar = new System.Speech.Recognition.Grammar(grammarBuilder); // Fully qualify Grammar
+            speechRecognizer.LoadGrammar(grammar);
+            speechRecognizer.SpeechRecognized += SpeechRecognizer_SpeechRecognized;
+            speechRecognizer.SetInputToDefaultAudioDevice();
+            speechRecognizer.RecognizeAsync(RecognizeMode.Multiple);
+        }
+
+
+
+
+        private void SpeechRecognizer_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)
+        {
+            string recognizedText = e.Result.Text;
+            noteSpace.AppendText(recognizedText + " ");
+        }
+
+        private void voiceBtn_Click(object sender, EventArgs e)
+        {
+            InitializeSpeechRecognition();
+        }
+
+        private void stopBtn_Click(object sender, EventArgs e)
+        {
+            // Handle stopBtn click event
+            // Stop speech recognition
+            speechRecognizer.RecognizeAsyncStop();
+        }
+
+        private void SpeechRecognized(object sender, SpeechRecognitionEventArgs e)
+        {
+            // Handle recognized speech
+            string recognizedText = e.Result.Text;
+
+            // Use Invoke to update UI controls from a different thread
+            noteSpace.Invoke(new Action(() =>
+            {
+                // Append the recognized text to the noteSpace
+                noteSpace.Text += Environment.NewLine + recognizedText;
+            }));
+        }
+
+
+
 
 
         private void Form1_Load(object sender, EventArgs e)
         {
             DisplayNoteNames();
+            
         }
 
         private void button2_Click(object sender, EventArgs e)

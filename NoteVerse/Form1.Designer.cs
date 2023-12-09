@@ -40,6 +40,7 @@
             noteSpace = new RichTextBox();
             newBtn = new Button();
             notePanel1 = new Panel();
+            deleteBtn = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
@@ -112,6 +113,7 @@
             // panel2
             // 
             panel2.BackColor = SystemColors.Control;
+            panel2.Controls.Add(deleteBtn);
             panel2.Controls.Add(voiceBtn);
             panel2.Controls.Add(saveBtn);
             panel2.Controls.Add(stopBtn);
@@ -144,7 +146,7 @@
             // stopBtn
             // 
             stopBtn.Image = (Image)resources.GetObject("stopBtn.Image");
-            stopBtn.Location = new Point(631, 6);
+            stopBtn.Location = new Point(643, 6);
             stopBtn.Name = "stopBtn";
             stopBtn.Size = new Size(116, 86);
             stopBtn.TabIndex = 2;
@@ -179,11 +181,19 @@
             // notePanel1
             // 
             notePanel1.AutoScroll = true;
-            notePanel1.Dock = DockStyle.Bottom;
             notePanel1.Location = new Point(383, 93);
             notePanel1.Name = "notePanel1";
             notePanel1.Size = new Size(515, 1025);
             notePanel1.TabIndex = 7;
+            // 
+            // deleteBtn
+            // 
+            deleteBtn.Image = (Image)resources.GetObject("deleteBtn.Image");
+            deleteBtn.Location = new Point(125, 6);
+            deleteBtn.Name = "deleteBtn";
+            deleteBtn.Size = new Size(116, 86);
+            deleteBtn.TabIndex = 3;
+            deleteBtn.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -216,5 +226,6 @@
         private Button stopBtn;
         private Button newBtn;
         private Panel notePanel1;
+        private Button deleteBtn;
     }
 }
