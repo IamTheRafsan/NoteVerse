@@ -73,11 +73,12 @@
             // 
             // goToQuiz
             // 
-            goToQuiz.BackColor = Color.LightSeaGreen;
+            goToQuiz.BackColor = Color.FromArgb(0, 87, 255);
             goToQuiz.Font = new Font("Segoe UI", 10F);
-            goToQuiz.Location = new Point(215, 1019);
+            goToQuiz.ForeColor = SystemColors.ButtonHighlight;
+            goToQuiz.Location = new Point(-3, 1037);
             goToQuiz.Name = "goToQuiz";
-            goToQuiz.Size = new Size(959, 78);
+            goToQuiz.Size = new Size(1399, 78);
             goToQuiz.TabIndex = 15;
             goToQuiz.Text = "Go To Quizzes";
             goToQuiz.UseVisualStyleBackColor = false;
@@ -86,7 +87,7 @@
             // correctText
             // 
             correctText.Font = new Font("Segoe UI", 12F);
-            correctText.Location = new Point(247, 762);
+            correctText.Location = new Point(238, 680);
             correctText.Name = "correctText";
             correctText.Size = new Size(1112, 50);
             correctText.TabIndex = 14;
@@ -94,7 +95,7 @@
             // option4Text
             // 
             option4Text.Font = new Font("Segoe UI", 12F);
-            option4Text.Location = new Point(247, 646);
+            option4Text.Location = new Point(238, 579);
             option4Text.Name = "option4Text";
             option4Text.Size = new Size(1112, 50);
             option4Text.TabIndex = 13;
@@ -102,7 +103,7 @@
             // option1Text
             // 
             option1Text.Font = new Font("Segoe UI", 12F);
-            option1Text.Location = new Point(247, 314);
+            option1Text.Location = new Point(238, 278);
             option1Text.Name = "option1Text";
             option1Text.Size = new Size(1112, 50);
             option1Text.TabIndex = 12;
@@ -110,7 +111,7 @@
             // option3Text
             // 
             option3Text.Font = new Font("Segoe UI", 12F);
-            option3Text.Location = new Point(247, 533);
+            option3Text.Location = new Point(238, 480);
             option3Text.Name = "option3Text";
             option3Text.Size = new Size(1112, 50);
             option3Text.TabIndex = 11;
@@ -118,7 +119,7 @@
             // option2Text
             // 
             option2Text.Font = new Font("Segoe UI", 12F);
-            option2Text.Location = new Point(247, 420);
+            option2Text.Location = new Point(238, 380);
             option2Text.Name = "option2Text";
             option2Text.Size = new Size(1112, 50);
             option2Text.TabIndex = 10;
@@ -126,16 +127,17 @@
             // questionText
             // 
             questionText.Font = new Font("Segoe UI", 12F);
-            questionText.Location = new Point(247, 212);
+            questionText.Location = new Point(238, 179);
             questionText.Name = "questionText";
             questionText.Size = new Size(1112, 50);
             questionText.TabIndex = 9;
             // 
             // creatBtn
             // 
-            creatBtn.BackColor = SystemColors.ActiveCaption;
-            creatBtn.Font = new Font("Segoe UI", 12F);
-            creatBtn.Location = new Point(569, 879);
+            creatBtn.BackColor = Color.FromArgb(204, 230, 255);
+            creatBtn.Font = new Font("Segoe UI", 10F);
+            creatBtn.ForeColor = SystemColors.ActiveCaptionText;
+            creatBtn.Location = new Point(574, 810);
             creatBtn.Name = "creatBtn";
             creatBtn.Size = new Size(269, 69);
             creatBtn.TabIndex = 8;
@@ -147,7 +149,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 10F);
-            label7.Location = new Point(23, 775);
+            label7.Location = new Point(23, 693);
             label7.Name = "label7";
             label7.Size = new Size(209, 37);
             label7.TabIndex = 7;
@@ -157,7 +159,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 10F);
-            label6.Location = new Point(41, 659);
+            label6.Location = new Point(41, 592);
             label6.Name = "label6";
             label6.Size = new Size(128, 37);
             label6.TabIndex = 6;
@@ -167,7 +169,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 10F);
-            label5.Location = new Point(41, 546);
+            label5.Location = new Point(43, 493);
             label5.Name = "label5";
             label5.Size = new Size(128, 37);
             label5.TabIndex = 5;
@@ -177,7 +179,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 10F);
-            label4.Location = new Point(41, 327);
+            label4.Location = new Point(41, 291);
             label4.Name = "label4";
             label4.Size = new Size(135, 37);
             label4.TabIndex = 4;
@@ -187,7 +189,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 10F);
-            label3.Location = new Point(41, 433);
+            label3.Location = new Point(43, 393);
             label3.Name = "label3";
             label3.Size = new Size(128, 37);
             label3.TabIndex = 3;
@@ -197,7 +199,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 10F);
-            label1.Location = new Point(41, 225);
+            label1.Location = new Point(41, 188);
             label1.Name = "label1";
             label1.Size = new Size(137, 37);
             label1.TabIndex = 2;
@@ -206,10 +208,11 @@
             // 
             // label2
             // 
-            label2.BackColor = SystemColors.GradientActiveCaption;
-            label2.Location = new Point(537, 55);
+            label2.BackColor = SystemColors.Window;
+            label2.Font = new Font("Segoe UI", 18F);
+            label2.Location = new Point(541, 40);
             label2.Name = "label2";
-            label2.Size = new Size(328, 88);
+            label2.Size = new Size(328, 82);
             label2.TabIndex = 1;
             label2.Text = "  Make Quiz";
             label2.Click += label2_Click;

@@ -83,7 +83,7 @@ namespace NoteVerse
 
                 if (noteExists)
                 {
-                    
+
                     using (MySqlCommand updateCmd = new MySqlCommand("UPDATE Notes SET NoteText = @NoteText WHERE NoteName = @NoteName", connection))
                     {
                         updateCmd.Parameters.AddWithValue("@NoteName", noteName);
@@ -93,7 +93,7 @@ namespace NoteVerse
                 }
                 else
                 {
-                   
+
                     using (MySqlCommand insertCmd = new MySqlCommand("INSERT INTO Notes (NoteName, NoteText) VALUES (@NoteName, @NoteText)", connection))
                     {
                         insertCmd.Parameters.AddWithValue("@NoteName", noteName);
@@ -107,7 +107,7 @@ namespace NoteVerse
 
         private List<string> GetNoteNamesFromDatabase()
         {
-            
+
             List<string> noteNames = new List<string>();
 
             using (MySqlConnection connection = new MySqlConnection(connectionString))
@@ -131,7 +131,7 @@ namespace NoteVerse
 
         private string GetNoteTextFromDatabase(string noteName)
         {
-            
+
             string noteText = string.Empty;
 
             using (MySqlConnection connection = new MySqlConnection(connectionString))
@@ -164,8 +164,8 @@ namespace NoteVerse
 
             Panel notePanel = new Panel();
             notePanel.AutoScroll = true;
-            notePanel.Location = new Point(6, 23); 
-            notePanel.Size = new Size(500, 400); 
+            notePanel.Location = new Point(6, 23);
+            notePanel.Size = new Size(500, 400);
             notePanel.Name = "notePanel";
             panel2.Controls.Add(notePanel);
 
@@ -182,15 +182,16 @@ namespace NoteVerse
                 noteButton.TabIndex = 0;
                 noteButton.Text = noteName;
                 noteButton.UseVisualStyleBackColor = false;
+                noteButton.BackColor = Color.FromArgb(155, 207, 255);
                 noteButton.Click += DynamicNoteButton_Click;
 
 
 
-                
+
                 notePanel1.Controls.Add(noteButton);
 
-                
-                buttonTop += noteButton.Height + 8; 
+
+                buttonTop += noteButton.Height + 8;
             }
         }
 
@@ -211,7 +212,7 @@ namespace NoteVerse
             string selectedNoteName = clickedButton.Text;
             string noteText = GetNoteTextFromDatabase(selectedNoteName);
 
-            
+
             noteNameTextBox.Text = selectedNoteName;
 
             noteSpace.Text = noteText;
@@ -288,20 +289,25 @@ namespace NoteVerse
 
         private void stopBtn_Click(object sender, EventArgs e)
         {
-   
+
             speechRecognizer.RecognizeAsyncStop();
         }
 
 
-        
+
         private void toDoBtn_Click(object sender, EventArgs e)
         {
             todoform toDoForm = new todoform();
 
+            toDoBtn.BackColor = Color.FromArgb(155, 207, 255);
+            quizBtn.BackColor = Color.FromArgb(204, 230, 255);
+            noteBtn.BackColor = Color.FromArgb(204, 230, 255);
             toDoForm.Parent = this;
             toDoForm.Dock = DockStyle.Fill;
 
-           
+
+
+
             panel2.Controls.Clear();
 
             panel2.Controls.Add(toDoForm);
@@ -312,7 +318,10 @@ namespace NoteVerse
         private void button3_Click(object sender, EventArgs e)
         {
             quizForm QuizForm = new quizForm();
-            
+            toDoBtn.BackColor = Color.FromArgb(204, 230, 255);
+            quizBtn.BackColor = Color.FromArgb(155, 207, 255);
+            noteBtn.BackColor = Color.FromArgb(204, 230, 255);
+
 
             QuizForm.Parent = this;
             QuizForm.Dock = DockStyle.Fill;
@@ -341,10 +350,10 @@ namespace NoteVerse
 
         private void button2_Click(object sender, EventArgs e)
         {
-            // Code for button2 click event goes here
+            
         }
 
-        
+
 
         private void panel3_Paint(object sender, PaintEventArgs e)
         {
@@ -380,5 +389,26 @@ namespace NoteVerse
         {
 
         }
+
+        private void noteBtn_Click(object sender, EventArgs e)
+        {
+            noteBtn.BackColor = Color.FromArgb(155, 207, 255); 
+            toDoBtn.BackColor = Color.FromArgb(204, 230, 255);
+            quizBtn.BackColor = Color.FromArgb(204, 230, 255);
+
+
+            panel2.Controls.Clear();
+
+            
+            Form1 mainForm = new Form1();
+
+          
+            mainForm.Show();
+
+
+
+
+        }
+
     }
 }

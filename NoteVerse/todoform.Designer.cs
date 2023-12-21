@@ -30,7 +30,6 @@
         {
             toDoPanel = new Panel();
             panel2 = new Panel();
-            checkBtn = new Button();
             toDoCreate = new Button();
             toDoTime = new DateTimePicker();
             label2 = new Label();
@@ -43,17 +42,16 @@
             // 
             // toDoPanel
             // 
-            toDoPanel.BackColor = SystemColors.ActiveCaption;
-            toDoPanel.Dock = DockStyle.Left;
-            toDoPanel.Location = new Point(0, 0);
+            toDoPanel.BackColor = Color.FromArgb(204, 230, 255);
+            toDoPanel.ForeColor = Color.White;
+            toDoPanel.Location = new Point(3, 0);
             toDoPanel.Name = "toDoPanel";
-            toDoPanel.Size = new Size(550, 1118);
+            toDoPanel.Size = new Size(547, 1118);
             toDoPanel.TabIndex = 0;
             // 
             // panel2
             // 
-            panel2.BackColor = SystemColors.ControlLightLight;
-            panel2.Controls.Add(checkBtn);
+            panel2.BackColor = SystemColors.Window;
             panel2.Controls.Add(toDoCreate);
             panel2.Controls.Add(toDoTime);
             panel2.Controls.Add(label2);
@@ -67,19 +65,10 @@
             panel2.Size = new Size(843, 1118);
             panel2.TabIndex = 1;
             // 
-            // checkBtn
-            // 
-            checkBtn.Location = new Point(300, 697);
-            checkBtn.Name = "checkBtn";
-            checkBtn.Size = new Size(150, 46);
-            checkBtn.TabIndex = 7;
-            checkBtn.Text = "button1";
-            checkBtn.UseVisualStyleBackColor = true;
-            // 
             // toDoCreate
             // 
-            toDoCreate.BackColor = SystemColors.ActiveCaption;
-            toDoCreate.ForeColor = SystemColors.ControlLightLight;
+            toDoCreate.BackColor = Color.FromArgb(204, 230, 255);
+            toDoCreate.ForeColor = Color.Black;
             toDoCreate.Location = new Point(200, 571);
             toDoCreate.Name = "toDoCreate";
             toDoCreate.Size = new Size(458, 74);
@@ -98,7 +87,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(180, 479);
+            label2.Location = new Point(181, 481);
             label2.Name = "label2";
             label2.Size = new Size(67, 32);
             label2.TabIndex = 4;
@@ -107,7 +96,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(180, 401);
+            label1.Location = new Point(181, 403);
             label1.Name = "label1";
             label1.Size = new Size(64, 32);
             label1.TabIndex = 3;
@@ -131,7 +120,7 @@
             // jj
             // 
             jj.AutoSize = true;
-            jj.Location = new Point(180, 324);
+            jj.Location = new Point(181, 328);
             jj.Name = "jj";
             jj.Size = new Size(78, 32);
             jj.TabIndex = 0;
@@ -165,6 +154,5 @@
         private Button toDoCreate;
         private Label test;
         private Panel toDoPanel;
-        private Button checkBtn;
     }
 }

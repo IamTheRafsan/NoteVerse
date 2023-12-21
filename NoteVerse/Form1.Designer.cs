@@ -47,7 +47,7 @@
             // 
             // panel1
             // 
-            panel1.BackColor = Color.FromArgb(81, 187, 147);
+            panel1.BackColor = Color.FromArgb(204, 230, 255);
             panel1.Controls.Add(quizBtn);
             panel1.Controls.Add(toDoBtn);
             panel1.Controls.Add(noteBtn);
@@ -59,10 +59,9 @@
             // 
             // quizBtn
             // 
-            quizBtn.BackColor = Color.FromArgb(81, 187, 147);
             quizBtn.FlatAppearance.BorderSize = 0;
             quizBtn.FlatStyle = FlatStyle.Flat;
-            quizBtn.ForeColor = SystemColors.ButtonHighlight;
+            quizBtn.ForeColor = SystemColors.ActiveCaptionText;
             quizBtn.Image = (Image)resources.GetObject("quizBtn.Image");
             quizBtn.ImageAlign = ContentAlignment.MiddleLeft;
             quizBtn.Location = new Point(3, 241);
@@ -77,10 +76,9 @@
             // 
             // toDoBtn
             // 
-            toDoBtn.BackColor = Color.FromArgb(81, 187, 147);
             toDoBtn.FlatAppearance.BorderSize = 0;
             toDoBtn.FlatStyle = FlatStyle.Flat;
-            toDoBtn.ForeColor = SystemColors.ButtonHighlight;
+            toDoBtn.ForeColor = SystemColors.ActiveCaptionText;
             toDoBtn.Image = (Image)resources.GetObject("toDoBtn.Image");
             toDoBtn.ImageAlign = ContentAlignment.MiddleLeft;
             toDoBtn.Location = new Point(0, 126);
@@ -95,9 +93,10 @@
             // 
             // noteBtn
             // 
+            noteBtn.BackColor = Color.FromArgb(155, 207, 255);
             noteBtn.FlatAppearance.BorderSize = 0;
             noteBtn.FlatStyle = FlatStyle.Flat;
-            noteBtn.ForeColor = SystemColors.ButtonHighlight;
+            noteBtn.ForeColor = SystemColors.ActiveCaptionText;
             noteBtn.Image = (Image)resources.GetObject("noteBtn.Image");
             noteBtn.ImageAlign = ContentAlignment.MiddleLeft;
             noteBtn.Location = new Point(0, 23);
@@ -108,10 +107,11 @@
             noteBtn.Text = "              Note";
             noteBtn.TextAlign = ContentAlignment.MiddleLeft;
             noteBtn.UseVisualStyleBackColor = false;
+            noteBtn.Click += noteBtn_Click;
             // 
             // panel2
             // 
-            panel2.BackColor = SystemColors.Control;
+            panel2.BackColor = Color.White;
             panel2.Controls.Add(newBtn);
             panel2.Controls.Add(notePanel1);
             panel2.Controls.Add(deleteBtn);
@@ -128,12 +128,12 @@
             // 
             // newBtn
             // 
-            newBtn.BackColor = Color.Tomato;
+            newBtn.BackColor = Color.FromArgb(0, 87, 255);
             newBtn.ForeColor = SystemColors.ButtonHighlight;
             newBtn.Image = (Image)resources.GetObject("newBtn.Image");
             newBtn.Location = new Point(3, 3);
             newBtn.Name = "newBtn";
-            newBtn.Size = new Size(518, 92);
+            newBtn.Size = new Size(524, 92);
             newBtn.TabIndex = 6;
             newBtn.Text = "New";
             newBtn.TextAlign = ContentAlignment.MiddleRight;
@@ -144,7 +144,7 @@
             // notePanel1
             // 
             notePanel1.AutoScroll = true;
-            notePanel1.BackColor = SystemColors.Control;
+            notePanel1.BackColor = Color.FromArgb(204, 230, 255);
             notePanel1.Location = new Point(6, 98);
             notePanel1.Name = "notePanel1";
             notePanel1.Size = new Size(515, 1017);
@@ -152,47 +152,51 @@
             // 
             // deleteBtn
             // 
+            deleteBtn.BackColor = Color.FromArgb(204, 230, 255);
             deleteBtn.Image = (Image)resources.GetObject("deleteBtn.Image");
-            deleteBtn.Location = new Point(649, 6);
+            deleteBtn.Location = new Point(737, 1029);
             deleteBtn.Name = "deleteBtn";
             deleteBtn.Size = new Size(116, 86);
             deleteBtn.TabIndex = 3;
-            deleteBtn.UseVisualStyleBackColor = true;
+            deleteBtn.UseVisualStyleBackColor = false;
             // 
             // voiceBtn
             // 
+            voiceBtn.BackColor = Color.FromArgb(204, 230, 255);
             voiceBtn.Image = (Image)resources.GetObject("voiceBtn.Image");
-            voiceBtn.Location = new Point(1274, 6);
+            voiceBtn.Location = new Point(1103, 1029);
             voiceBtn.Name = "voiceBtn";
             voiceBtn.Size = new Size(116, 86);
             voiceBtn.TabIndex = 0;
-            voiceBtn.UseVisualStyleBackColor = true;
+            voiceBtn.UseVisualStyleBackColor = false;
             // 
             // saveBtn
             // 
+            saveBtn.BackColor = Color.FromArgb(204, 230, 255);
             saveBtn.Image = (Image)resources.GetObject("saveBtn.Image");
-            saveBtn.Location = new Point(527, 6);
+            saveBtn.Location = new Point(859, 1029);
             saveBtn.Name = "saveBtn";
             saveBtn.Size = new Size(116, 86);
             saveBtn.TabIndex = 1;
-            saveBtn.UseVisualStyleBackColor = true;
+            saveBtn.UseVisualStyleBackColor = false;
             // 
             // stopBtn
             // 
+            stopBtn.BackColor = Color.FromArgb(204, 230, 255);
             stopBtn.Image = (Image)resources.GetObject("stopBtn.Image");
-            stopBtn.Location = new Point(1152, 6);
+            stopBtn.Location = new Point(981, 1029);
             stopBtn.Name = "stopBtn";
             stopBtn.Size = new Size(116, 86);
             stopBtn.TabIndex = 2;
-            stopBtn.UseVisualStyleBackColor = true;
+            stopBtn.UseVisualStyleBackColor = false;
             stopBtn.Click += stopBtn_Click_1;
             // 
             // noteSpace
             // 
             noteSpace.BorderStyle = BorderStyle.FixedSingle;
-            noteSpace.Location = new Point(524, 98);
+            noteSpace.Location = new Point(527, 3);
             noteSpace.Name = "noteSpace";
-            noteSpace.Size = new Size(872, 1020);
+            noteSpace.Size = new Size(869, 1026);
             noteSpace.TabIndex = 2;
             noteSpace.Text = "";
             noteSpace.TextChanged += richTextBox1_TextChanged;
@@ -205,6 +209,7 @@
             ClientSize = new Size(1782, 1118);
             Controls.Add(panel2);
             Controls.Add(panel1);
+            ForeColor = SystemColors.ActiveCaptionText;
             Name = "Form1";
             Text = "Form1";
             Load += Form1_Load;

@@ -50,10 +50,10 @@ namespace NoteVerse
 
             try
             {
-                // Save todo to the database
+                
                 SaveTodoToDatabase(todoName, toDoTime, toDoDate);
 
-                // Update the display in the toDoPanel
+                
                 DisplayTodoData();
 
               
@@ -94,31 +94,33 @@ namespace NoteVerse
 
         private void DisplayTodoData()
         {
-            // Clear existing controls in the toDoPanel
+            
             toDoPanel.Controls.Clear();
 
             try
             {
-                // Fetch data from the ToDo table
+                
                 List<TodoItem> todoItems = GetTodoItemsFromDatabase();
 
 
-                // Create and add buttons for each ToDo item
+                
                 int buttonTop = 0;
                 foreach (TodoItem todoItem in todoItems)
                 {
-                    // Create and add buttons for each ToDo item
+                    
                     Button todoButton = new Button();
                     todoButton.BackColor = SystemColors.Control;
                     todoButton.Location = new Point(6, buttonTop);
                     todoButton.Size = new Size(538, 100);
                     todoButton.TabIndex = 0;
+                    todoButton.BackColor = Color.FromArgb(155, 207, 255);
+                    todoButton.ForeColor = Color.Black;
                     todoButton.Text = $"{todoItem.Name} - {todoItem.Date.ToShortDateString()} {todoItem.Time.ToString(@"hh\:mm")}";
                     todoButton.UseVisualStyleBackColor = false;
                     toDoPanel.Controls.Add(todoButton);
 
-                    // Adjust the top position for the next button
-                    buttonTop += todoButton.Height + 8; // Add some spacing between buttons
+                    
+                    buttonTop += todoButton.Height + 8; 
                 }
             }
             catch (Exception ex)
@@ -163,11 +165,11 @@ namespace NoteVerse
             public string Name { get; set; }
             public TimeSpan Time { get; set; }
             public DateTime Date { get; set; }
-            public bool Notified { get; set; } // Add this property
+            public bool Notified { get; set; } 
 
             public TodoItem()
             {
-                Notified = false; // Initialize to false by default
+                Notified = false; 
             }
         }
 
